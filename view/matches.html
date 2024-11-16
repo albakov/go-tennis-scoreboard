@@ -1,0 +1,46 @@
+{{template "header" . }}
+<main>
+    <div class="container">
+        <h1>Matches</h1>
+        <form class="input-container" action="/matches" method="get">
+            <input class="input-filter" name="filter_by_player_name" placeholder="Filter by name" type="text"
+                   value="{{ .Data.Filter.Value }}" required/>
+            <button type="submit" class="btn-filter">Submit</button>
+            {{ if ne .Data.Filter.Value "" }}
+                <a href="/matches" class="btn-reset">Reset</a>
+            {{ end }}
+        </form>
+
+        <table class="table-matches">
+            <tr>
+                <th>Player One</th>
+                <th>Player Two</th>
+                <th>Winner</th>
+            </tr>
+            {{ range .Data.Matches }}
+                <tr>
+                    <td>{{ .PlayerOneFullName }}</td>
+                    <td>{{ .PlayerTwoFullName }}</td>
+                    <td><span class="winner-name-td">{{ .WinnerFullName }}</span></td>
+                </tr>
+            {{ end }}
+        </table>
+
+        <div class="pagination">
+            {{ if .Data.Paginator.CanShowPrevPage }}
+                <a class="prev" href="{{ .Data.Paginator.PrevPageUrl }}"> < </a>
+            {{ end }}
+            {{ range .Data.Paginator.Pages }}
+                {{ if eq .Number $.Data.Paginator.CurrentPage }}
+                    <a class="num-page current" href="#">{{ .Number }}</a>
+                {{ else }}
+                    <a class="num-page" href="{{ .Url }}">{{ .Number }}</a>
+                {{ end }}
+            {{ end }}
+            {{ if .Data.Paginator.CanShowNextPage }}
+                <a class="next" href="{{ .Data.Paginator.NextPageUrl }}"> > </a>
+            {{ end }}
+        </div>
+    </div>
+</main>
+{{template "footer"}}

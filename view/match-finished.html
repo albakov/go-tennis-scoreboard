@@ -1,0 +1,31 @@
+{{template "header" . }}
+<main>
+    <div class="container">
+        <section class="match-result">
+            <img src="images/frame_matches.png" alt="frame_matches">
+            <div class="match-block">
+                <h1 class="match-title">Match Result</h1>
+                <button class="match-block__btn">
+                    <a href="/matches">View All Matches</a>
+                </button>
+            </div>
+        </section>
+        <section class="finish-result">
+            <h2 class="finish-result__title">Match Result</h2>
+            <div class="finish-result__block">
+                <div class="winner">
+                    <span>Winner</span>
+                    <div class="winner-name">
+                        <h3 class="winner-name__text">{{ .Data.Winner.FullName }}</h3>
+                    </div>
+                    <img class="winner-name__img" src="images/cup.png" alt="cup">
+                </div>
+                <div class="loser">
+                    <span>Loser</span>
+                    <div class="loser-name__text">{{ .Data.Loser.FullName }}</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+{{template "footer"}}

@@ -1,0 +1,10 @@
+# server
+host = "localhost"
+port = 8181
+
+# sqllite
+abs_path_to_database = "database/sqlite.db"
+
+# game
+max_sets_to_win = 2
+matches_per_page = 2

@@ -1,0 +1,24 @@
+{{template "header" . }}
+<main>
+    <div class="container">
+        <div>
+            <h1>Start new match</h1>
+            <div class="new-match-image"></div>
+            <div class="form-container center">
+                <form method="post" action="/new-match" autocomplete="off">
+                    <p style="color: red;">{{ .ErrorMessage }}</p>
+                    <label class="label-player" for="playerOne">Player one</label>
+                    <input class="input-player" placeholder="Name" type="text" id="playerOne"
+                           name="playerOne" pattern="[A-Za-z]\. [A-Za-z]+" required
+                           title="Enter a name in the format n. surname ">
+                    <label class="label-player" for="playerTwo">Player two</label>
+                    <input class="input-player" placeholder="Name" type="text" id="playerTwo"
+                           name="playerTwo" pattern="[A-Za-z]\. [A-Za-z]+" required
+                           title="Enter a name in the format n. surname ">
+                    <input class="form-button" type="submit" value="Start">
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{{template "footer"}}
